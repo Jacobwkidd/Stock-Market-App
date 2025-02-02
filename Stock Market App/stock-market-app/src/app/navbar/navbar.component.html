@@ -1,0 +1,38 @@
+<nav class="bg-cyan-500 text-black p-4">
+  <div class="container mx-auto flex items-center justify-between">
+    <!-- Logo Section -->
+    <div class="flex items-center bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl shadow-lg border-t-4 border-white">
+      <!-- Logo Icon -->
+      <div class="relative">
+        <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-green-400 to-blue-400 rounded-full shadow-md">
+          <!-- Stock Growth Icon -->
+        </div>
+        <!-- Glow Effect -->
+        <div class="absolute inset-0 w-full h-full rounded-full bg-green-500 opacity-10 blur-lg"></div>
+      </div>
+
+      <!-- Text Section -->
+      <div class="ml-4">
+        <h1 class="text-xl font-extrabold text-white tracking-wide">StockPulse</h1>
+        <p class="text-sm text-gray-200">Monitoring Trends, Building Futures</p>
+      </div>
+    </div>
+<app-search (search)="handleSearch($event)"></app-search>
+    <!-- Navigation Links -->
+    <div class="space-x-4">
+      
+      <a
+        routerLink="/"
+        class="hover:bg-cyan-700 px-4 py-2 rounded transition"
+        routerLinkActive="bg-cyan-800"
+        >Home</a
+      >
+      <a
+        routerLink="/portfolio"
+        class="hover:bg-cyan-700 px-4 py-2 rounded transition"
+        routerLinkActive="bg-cyan-800"
+        >Portfolio</a
+      >
+    </div>
+  </div>
+</nav>

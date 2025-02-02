@@ -1,0 +1,49 @@
+<div class="flex items-center bg-gray-800 rounded-full px-4 py-2 text-white">
+    <!-- Search Icon -->
+    <svg
+      class="w-5 h-5 text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1115.6 5.6a7.5 7.5 0 011.1 10.05z"
+      ></path>
+    </svg>
+  
+    <!-- Input Field -->
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Search for stocks..."
+      class="bg-transparent w-full outline-none px-4 text-white placeholder-gray-400"
+      (input)="onSearch()"
+    />
+  
+    <!-- Clear Button -->
+    <button
+      *ngIf="searchTerm"
+      (click)="clearSearch()"
+      class="text-gray-400 hover:text-gray-200 transition"
+    >
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+      </svg>
+    </button>
+  </div>
+  
