@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -7,25 +6,21 @@ import { Router } from '@angular/router';
 export class AuthService {
   private isAuthenticated = false;
 
-  constructor(private router: Router) {}
-
-  login(username: string, password: string): boolean {
-    // Simulate a login check. Replace with real authentication logic.
-    if (username === 'admin' && password === 'password') {
+  login(username: string, password: string): boolean { // ✅ Accepts parameters
+    if (username === 'admin' && password === 'password') { // ✅ Replace with real authentication logic
       this.isAuthenticated = true;
       localStorage.setItem('auth', 'true');
-      return true;
+      return true; // ✅ Returns a boolean to indicate success
     }
-    return false;
+    return false; // ✅ Returns false if login fails
+  }
+
+  isLoggedIn(): boolean {
+    return this.isAuthenticated || localStorage.getItem('auth') === 'true';
   }
 
   logout(): void {
     this.isAuthenticated = false;
     localStorage.removeItem('auth');
-    this.router.navigate(['/login']);
-  }
-
-  isLoggedIn(): boolean {
-    return localStorage.getItem('auth') === 'true';
   }
 }

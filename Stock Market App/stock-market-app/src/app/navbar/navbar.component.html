@@ -1,35 +1,40 @@
 <nav class="bg-cyan-500 text-black p-4">
   <div class="container mx-auto flex items-center justify-between">
-<!-- Logo Section -->
-<a routerLink="/" class="flex items-center bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl shadow-lg border-t-4 border-white cursor-pointer">
-  <!-- Logo Icon -->
-  <div class="relative">
-    <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-green-400 to-blue-400 rounded-full shadow-md">
-      <!-- Stock Growth Icon -->
+  <!-- Logo Section -->
+  <a routerLink="/" class="flex items-center bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl shadow-lg border-t-4 border-white cursor-pointer">
+    <!-- Logo Icon -->
+    <div class="relative">
+      <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-green-400 to-blue-400 rounded-full shadow-md">
+        <!-- Stock Growth Icon -->
+      </div>
+      <!-- Glow Effect -->
+      <div class="absolute inset-0 w-full h-full rounded-full bg-green-500 opacity-10 blur-lg"></div>
     </div>
-    <!-- Glow Effect -->
-    <div class="absolute inset-0 w-full h-full rounded-full bg-green-500 opacity-10 blur-lg"></div>
-  </div>
 
-  <!-- Text Section -->
-  <div class="ml-4">
-    <h1 class="text-xl font-extrabold text-white tracking-wide">StockPulse</h1>
-    <p class="text-sm text-gray-200">Monitoring Trends, Building Futures</p>
-  </div>
+    <!-- Text Section -->
+    <div class="ml-4">
+      <h1 class="text-xl font-extrabold text-white tracking-wide">StockPulse</h1>
+      <p class="text-sm text-gray-200">Monitoring Trends, Building Futures</p>
+    </div>
 </a>
 
 <app-search (search)="handleSearch($event)"></app-search>
     <!-- Navigation Links -->
-    <div class="space-x-4">
+    <div class="space-x-4 flex items-center">
       <a routerLink="/" class="hover:bg-cyan-700 px-4 py-2 rounded transition" routerLinkActive="bg-cyan-800">
         Home
       </a>
       <a routerLink="/portfolio" class="hover:bg-cyan-700 px-4 py-2 rounded transition" routerLinkActive="bg-cyan-800">
         Portfolio
       </a>
-      <a routerLink="/settings" class="hover:bg-cyan-700 px-4 py-2 rounded transition" routerLinkActive="bg-cyan-800">
-        ⚙️ 
-      </a>
+      <!-- Settings Dropdown -->
+      <button mat-icon-button [matMenuTriggerFor]="settingsMenu" id="dropdown-button">
+        ⚙️
+      </button>
+      <mat-menu #settingsMenu="matMenu">
+        <button mat-menu-item routerLink="/settings">Settings</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
     </div>
   </div>
 </nav>

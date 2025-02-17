@@ -7,4 +7,12 @@
     color: white;
     margin: 0 10px;
   }
-  
+
+  /* Ensures dropdown stays inside the navbar */
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
