@@ -1,26 +1,34 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticated = false;
+  private isAuthenticated = new BehaviorSubject<boolean>(this.checkAuthStatus());
+  authStatus$: Observable<boolean> = this.isAuthenticated.asObservable();
 
-  login(username: string, password: string): boolean { // ✅ Accepts parameters
-    if (username === 'admin' && password === 'password') { // ✅ Replace with real authentication logic
-      this.isAuthenticated = true;
+  constructor() {}
+
+  private checkAuthStatus(): boolean {
+    return localStorage.getItem('auth') === 'true';
+  }
+
+  isLoggedIn(): boolean {
+    return this.isAuthenticated.value;
+  }
+
+  login(username: string, password: string): boolean { // ✅ Returns boolean
+    if (username === 'admin' && password === 'password') { // Replace with actual authentication logic
       localStorage.setItem('auth', 'true');
-      return true; // ✅ Returns a boolean to indicate success
+      this.isAuthenticated.next(true);
+      return true; // ✅ Now it returns true if login is successful
     }
     return false; // ✅ Returns false if login fails
   }
 
-  isLoggedIn(): boolean {
-    return this.isAuthenticated || localStorage.getItem('auth') === 'true';
-  }
-
   logout(): void {
-    this.isAuthenticated = false;
     localStorage.removeItem('auth');
+    this.isAuthenticated.next(false);
   }
 }
