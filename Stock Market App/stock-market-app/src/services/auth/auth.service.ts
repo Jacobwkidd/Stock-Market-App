@@ -1,34 +1,36 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated = new BehaviorSubject<boolean>(this.checkAuthStatus());
-  authStatus$: Observable<boolean> = this.isAuthenticated.asObservable();
+  private apiUrl = 'http://localhost:3000/auth';
+  
+  private authStatus = new BehaviorSubject<boolean>(this.hasToken());
+  public authStatus$ = this.authStatus.asObservable();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  private checkAuthStatus(): boolean {
-    return localStorage.getItem('auth') === 'true';
+  register(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, { email, password });
   }
 
-  isLoggedIn(): boolean {
-    return this.isAuthenticated.value;
-  }
-
-  login(username: string, password: string): boolean { // ✅ Returns boolean
-    if (username === 'admin' && password === 'password') { // Replace with actual authentication logic
-      localStorage.setItem('auth', 'true');
-      this.isAuthenticated.next(true);
-      return true; // ✅ Now it returns true if login is successful
-    }
-    return false; // ✅ Returns false if login fails
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, { email, password });
   }
 
   logout(): void {
-    localStorage.removeItem('auth');
-    this.isAuthenticated.next(false);
+    localStorage.removeItem('token');
+    this.authStatus.next(false);
+  }
+
+  isLoggedIn(): boolean {
+    return this.hasToken();
+  }
+
+  private hasToken(): boolean {
+    return !!localStorage.getItem('token');
   }
 }

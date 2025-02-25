@@ -15,13 +15,17 @@ export class LoginComponent {
   username = '';
   password = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   onSubmit(): void {
-    if (this.authService.login(this.username, this.password)) { 
-      this.router.navigate(['/']);
-    } else {
-      alert('Invalid username or password');
-    }
+    this.authService.login(this.username, this.password).subscribe({
+      next: (res) => {
+        console.log('Login success:', res);
+        localStorage.setItem('token', res.token);
+      },
+      error: (err) => {
+        console.error('Login failed:', err);
+      }
+    });
   }
 }
