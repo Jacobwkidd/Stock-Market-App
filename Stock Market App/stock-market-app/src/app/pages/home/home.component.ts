@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StocksService } from '../../services/stocks.service';
+import { StocksService } from '../../../services/Stocks/stocks.service';
 import { CommonModule } from '@angular/common';
 
 

@@ -1,11 +1,10 @@
 <ng-container *ngIf="isAuthenticated; else guestNavbar">
-    <app-navbar></app-navbar>
-  </ng-container>
-  
-  <ng-template #guestNavbar>
-    <app-guest-navbar></app-guest-navbar>
-  </ng-template>
-  
+  <app-navbar></app-navbar> <!-- Show main navbar when logged in -->
+</ng-container>
+
+<ng-template #guestNavbar>
+  <app-guest-navbar></app-guest-navbar> <!-- Show guest navbar when logged out -->
+</ng-template>
   <!-- Page Content -->
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
   

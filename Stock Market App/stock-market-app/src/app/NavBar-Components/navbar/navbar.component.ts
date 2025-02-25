@@ -3,8 +3,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu'; // ✅ Import Material Menu
 import { Router, RouterModule } from '@angular/router';
-import { SearchComponent } from '../search/search.component';
-import { AuthService } from '../../services/auth/auth.service';
+import { SearchComponent } from '../../Components/search/search.component';
+import { AuthService } from '../../../services/Auth/auth.service';
+
 
 @Component({
   selector: 'app-navbar',

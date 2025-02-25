@@ -8,12 +8,12 @@
     </div>
   </div>
 
-  <!-- Right Side (Login Form) -->
+  
   <div class="w-1/2 flex items-center justify-center bg-white">
     <div class="bg-white p-10 rounded-lg shadow-lg w-96">
       <h1 class="text-2xl font-bold text-black mb-4">Log in to StockPulse</h1>
 
-      <!-- Email Input -->
+      
       <div class="mb-4">
         <label class="block text-gray-700">Email</label>
         <input
@@ -25,7 +25,7 @@
         />
       </div>
 
-      <!-- Password Input -->
+      
       <div class="mb-4 relative">
         <label class="block text-gray-700">Password</label>
         <input
@@ -37,13 +37,13 @@
         />
       </div>
 
-      <!-- Remember Me Checkbox -->
+      
       <div class="mb-4 flex items-center">
         <input type="checkbox" id="remember" class="mr-2" />
         <label for="remember" class="text-gray-600 text-sm">Keep me logged in for up to 30 days</label>
       </div>
 
-      <!-- Login Button -->
+      
       <button
         (click)="onSubmit()"
         class="w-full bg-cyan-500 text-white py-2 rounded-lg hover:bg-cyan-600 transition"
@@ -51,25 +51,25 @@
         Log In
       </button>
 
-      <!-- Forgot Password / Help -->
+      
       <div class="flex justify-between mt-4">
         <a href="#" class="text-black hover:underline">I Need Help</a>
       </div>
 
-      <!-- Separator -->
+      
       <div class="my-6 border-t"></div>
 
-      <!-- Alternative Login (Google/Passkeys) -->
+      
       <button
         class="w-full border border-gray-500 text-black py-2 rounded-lg flex items-center justify-center hover:bg-gray-100 transition"
       >
         🔐 Log in with passkeys
       </button>
 
-      <!-- Create Account -->
+      
       <p class="text-gray-700 text-center mt-4">
         Not on StockPulse?
-        <a routerLink="/signup" class="text-blue-600 hover:underline font-semibold">Create an account</a>
+        <a routerLink="/register" class="text-blue-600 hover:underline font-semibold">Create an account</a>
       </p>
     </div>
   </div>

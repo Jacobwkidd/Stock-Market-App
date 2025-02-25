@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../../services/Auth/auth.service';
+
 
 @Component({
   selector: 'app-guest-navbar',
