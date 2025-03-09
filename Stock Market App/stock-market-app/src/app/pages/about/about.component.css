@@ -1,0 +1,33 @@
+/* Ensure the carousel fits well */
+.owl-carousel .owl-stage-outer {
+  padding: 20px 0;
+}
+
+/* Style for carousel navigation buttons */
+.owl-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.owl-nav button {
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 24px !important;
+  transition: 0.3s ease-in-out;
+}
+
+.owl-nav button:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Style for active dot */
+.owl-dots .owl-dot.active span {
+  background-color: #06b6d4 !important; /* Cyan */
+}
