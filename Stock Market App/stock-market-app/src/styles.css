@@ -1,9 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Owl Carousel styles */
-@import 'node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-@import 'node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@import 'node_modules/ngx-owl-carousel-o/lib/styles/owl.carousel.min.css';
+@import 'node_modules/ngx-owl-carousel-o/lib/styles/owl.theme.default.min.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
