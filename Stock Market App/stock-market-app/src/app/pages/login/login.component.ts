@@ -30,4 +30,30 @@ export class LoginComponent {
       }
     });
   }
+
+  loginWithPasskey(): void {
+    // Simulated WebAuthn credential (in real world, use navigator.credentials)
+    const mockCredential = {
+      id: 'mock-id',
+      rawId: 'mock-raw-id',
+      type: 'public-key',
+      response: {
+        clientDataJSON: '...',
+        authenticatorData: '...',
+        signature: '...',
+        userHandle: 'mock-user'
+      }
+    };
+  
+    this.authService.passkeyLogin(mockCredential).subscribe({
+      next: (response: { token: string }) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/']);
+      },
+      error: (_err: any) => {
+        this.errorMessage = 'Passkey login failed.';
+      }      
+    });
+  }
+  
 }

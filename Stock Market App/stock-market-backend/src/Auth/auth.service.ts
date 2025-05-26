@@ -3,12 +3,14 @@ import { UsersService } from '../Users/users.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'src/Users/dto/create-user.dto';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
+    
   ) {}
 
   async validateUser(email: string, password: string): Promise<any> {

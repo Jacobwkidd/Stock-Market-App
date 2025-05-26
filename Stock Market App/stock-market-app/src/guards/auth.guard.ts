@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { AuthService } from '../services/Auth/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  constructor(private http: HttpClient) {}
 
-  canActivate(): boolean {
-    if (this.authService.isLoggedIn()) {
-      return true;
-    }
-    this.router.navigate(['/login']);
-    return false;
+  login(email: string, password: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>('http://localhost:3000/auth/login', { email, password });
+  }
+
+  passkeyLogin(credential: any): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>('http://localhost:3000/auth/verify-login', credential);
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
   }
 }
