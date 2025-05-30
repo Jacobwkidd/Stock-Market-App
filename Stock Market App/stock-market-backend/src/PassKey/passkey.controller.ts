@@ -7,9 +7,11 @@ export class PasskeyController {
 
   @Post('verify-login')
   verifyLogin(@Body() body: any) {
-    const userId = 'demo-user'; // In real use, get from session or request
-    return this.passkeyService.verifyLogin(body, userId);
+    const userId = 'demo-user'; // eventually replace with session or DB
+    const { response, rememberMe } = body;
+    return this.passkeyService.verifyLogin(response, userId, rememberMe);
   }
+
   @Post('generate-login-options')
   generateLoginOptions(@Body('userId') userId: string) {
     return this.passkeyService.generateLoginOptions(userId);
